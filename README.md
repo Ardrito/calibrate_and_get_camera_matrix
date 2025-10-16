@@ -34,6 +34,12 @@ or
 undistorted_image = cv2.remap(image, mapx_one, mapy_one, cv2.INTER_LINEAR)
 ```
 
+I recommend running display_camera_matrix.py and output to a text file to view parameters
+
+```
+python3 display_camera_matrix.py > test.txt
+```
+
 ## To find camera IDs
 On Linux run:
 ```
