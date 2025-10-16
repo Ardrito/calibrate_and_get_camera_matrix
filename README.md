@@ -3,13 +3,13 @@
 This tool provides a script and GUI to capture images and extract several camera matrix parameters for a stereo camera setup (or just an individual camera if preferred).
 
 ## How to use
-Run either GUI.py or Capture_Calibrate.py
-Use a chessboard pattern ( number of squares horizontally != number of squares vertically ) move the chessboard around the scene slowly, at a distance representative of the planned use case.
-Images will be captured at "snap_time" interval if a valid chessboard is visible to the camera.
-Recommended images: >20
-Minimum recommended grid size: 11x10 (Larger likely to produce better results, depends on intended application)
-R - The rotation between cameras must be provided in Capture_Calibrate if R != 0
-T - Can be provided in the GUI if needed, or through Capture_Calibrate
+Run either GUI.py or Capture_Calibrate.py  
+Use a chessboard pattern ( number of squares horizontally != number of squares vertically ) move the chessboard around the scene slowly, at a distance representative of the planned use case.  
+Images will be captured at "snap_time" interval if a valid chessboard is visible to the camera.  
+Recommended images: >20  
+Minimum recommended grid size: 11x10 (Larger likely to produce better results, depends on intended application)  
+R - The rotation between cameras must be provided in Capture_Calibrate if R != 0  
+T - Can be provided in the GUI if needed, or through Capture_Calibrate.  
 
 Sample to use the output .npz file:
 ```
@@ -19,7 +19,7 @@ mtx_l, dist_l = calib["camera_matrix_two"], calib["dist_two"]
 R, T = calib["R"], calib["T"]
 ```
 
-This provides the original camera matrix and new camera matrix from opencv-python, in addition mapx and mapy.
+This provides the original camera matrix and new camera matrix from opencv-python, in addition mapx and mapy.  
 This allows the use of either cv2.undistort or cv2.remap to undistort and image as below:
 
 ```
