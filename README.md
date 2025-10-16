@@ -6,10 +6,12 @@ This tool provides a script and GUI to capture images and extract several camera
 Run either GUI.py or Capture_Calibrate.py  
 Use a chessboard pattern ( number of squares horizontally != number of squares vertically ) move the chessboard around the scene slowly, at a distance representative of the planned use case.  
 Images will be captured at "snap_time" interval if a valid chessboard is visible to the camera.  
-Recommended images: >20  
+Recommended images: >40  
 Minimum recommended grid size: 11x10 (Larger likely to produce better results, depends on intended application)  
 R - The rotation between cameras must be provided in Capture_Calibrate if R != 0  
 T - Can be provided in the GUI if needed, or through Capture_Calibrate.  
+
+Reprojection errors (error_one & error_two) should be <1, ideally <0.5 
 
 Sample to use the output .npz file:
 ```

@@ -37,11 +37,12 @@ def getCalibration(camera_number: int = 0, chessboardSize: tuple[int,int] = (10,
     worldPoints = []
     imgPoints = []
     timer = 0
+    images_taken = 0
 
     while True:
         ret_frame, frame = cap.read()
         taken = False
-        if (not ret_frame) or (len(imgPoints) > num_images):
+        if (not ret_frame) or (len(imgPoints) > num_images-1):
             break
         
         img = frame
@@ -60,6 +61,7 @@ def getCalibration(camera_number: int = 0, chessboardSize: tuple[int,int] = (10,
                 imgPoints.append(corners)
                 t_cap = time.time()
                 taken = True
+                images_taken += 1
 
 
         t_curr = time.time()
@@ -67,10 +69,10 @@ def getCalibration(camera_number: int = 0, chessboardSize: tuple[int,int] = (10,
         t_prev = t_curr
         fps = 1.0/delta_t
         if not taken:
-            cv2.putText(img, f'Undistorted | Res: {w_frame}, {h_frame} | FPS: {fps:.2f} | Timer: {snap_time-timer:.2f}', org, font, 
+            cv2.putText(img, f'Undistorted | Res: {w_frame}, {h_frame} | FPS: {fps:.2f} | Images Taken {images_taken:02d} | Timer: {snap_time-timer:.2f}', org, font, 
                             fontScale, color, thickness, cv2.LINE_AA)
         if taken:
-            cv2.putText(img, f'Undistorted | Res: {w_frame}, {h_frame} | FPS: {fps:.2f} | Timer: {snap_time-timer:.2f} | Taken', org, font, 
+            cv2.putText(img, f'Undistorted | Res: {w_frame}, {h_frame} | FPS: {fps:.2f} | Images Taken {images_taken:02d} |  Timer: {snap_time-timer:.2f} | Taken', org, font, 
                             fontScale, color, thickness, cv2.LINE_AA)
 
         cv2.imshow("img", img)
@@ -107,7 +109,7 @@ if __name__ == "__main__":
     square_size = 0.018
     R = np.eye(3)
     T = np.array([0.133,0,0])
-    resolution = (1280,720)
+    resolution = (640,480)
 
 
     print ("Start:", camera_number_one)
