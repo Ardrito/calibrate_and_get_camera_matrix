@@ -19,6 +19,19 @@ mtx_l, dist_l = calib["camera_matrix_two"], calib["dist_two"]
 R, T = calib["R"], calib["T"]
 ```
 
+This provides the original camera matrix and new camera matrix from opencv-python, in addition mapx and mapy.
+This allows the use of either cv2.undistort or cv2.remap to undistort and image as below:
+
+```
+undistorted_image = cv.undistort(image, camera_matrix_one, dist_one, None, newMtx_one)
+```
+
+or 
+
+```
+undistorted_image = cv2.remap(image, mapx_one, mapy_one, cv2.INTER_LINEAR)
+```
+
 ## Requirements
 - opencv-python
 - numpy
