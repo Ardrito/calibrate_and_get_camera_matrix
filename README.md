@@ -32,6 +32,12 @@ or
 undistorted_image = cv2.remap(image, mapx_one, mapy_one, cv2.INTER_LINEAR)
 ```
 
+## To find camera IDs
+On Linux run:
+```
+v4l2-ctl --list-devices
+```
+
 ## Requirements
 - opencv-python
 - numpy
